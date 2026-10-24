@@ -14,9 +14,20 @@ export function SettingPannel({
   return (
     //group connection settings
     <section aria-labelledby="settings-heading" className="flex flex-col gap-4 text-slate-900">
-      <h2 id="settings-heading" className="text-base font-semibold tracking-tight">
-        settings
-      </h2>
+      {/*configure the server address*/}
+        <div className="flex flex-col gap-1">
+          <label htmlFor="address" className="text-sm font-medium text-slate-700">
+            address
+          </label>
+          <input
+            id="address"
+            name="address"
+            type="text"
+            value={address}
+            onChange={(event) => onAddressChange(event.target.value)}
+            className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm tabular-nums outline-none transition focus:border-gray-400 focus:bg-white focus:ring-4 focus:ring-gray-100"
+          />
+        </div>
       {/*stack the connection fields*/}
       <div className="flex flex-col gap-3">
         {/*configure the server port*/}
@@ -33,20 +44,6 @@ export function SettingPannel({
             inputMode="numeric"
             value={port}
             onChange={(event) => onPortChange(event.target.value)}
-            className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm tabular-nums outline-none transition focus:border-gray-400 focus:bg-white focus:ring-4 focus:ring-gray-100"
-          />
-        </div>
-        {/*configure the server address*/}
-        <div className="flex flex-col gap-1">
-          <label htmlFor="address" className="text-sm font-medium text-slate-700">
-            address
-          </label>
-          <input
-            id="address"
-            name="address"
-            type="text"
-            value={address}
-            onChange={(event) => onAddressChange(event.target.value)}
             className="w-full rounded-lg border border-slate-200 bg-slate-50 px-3 py-2 text-sm tabular-nums outline-none transition focus:border-gray-400 focus:bg-white focus:ring-4 focus:ring-gray-100"
           />
         </div>

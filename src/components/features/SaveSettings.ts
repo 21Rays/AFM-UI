@@ -9,7 +9,7 @@ export function LoadSettings(): SettingsProps {
   const savedSettings = localStorage.getItem(SETTINGS_STORAGE_KEY);
 
   if (savedSettings === null) {
-    return { port: "", address: "" };
+    return { port: "3000", address: "127.0.0.1" };
   }
 
   const settings: unknown = JSON.parse(savedSettings);

@@ -12,6 +12,7 @@ import { LoadSettings, SaveSetting } from "./components/features/SaveSettings";
 export function App() {
   const [settings, setSettings] = useState(LoadSettings);
   const [saveMessage, setSaveMessage] = useState("");
+  const [query, setQuery] = useState("");
 
   function handleSaveSettings() {
     try {
@@ -37,7 +38,7 @@ export function App() {
           className="relative flex min-h-80 items-end gap-3 rounded-xl border border-slate-200 bg-white p-4"
         >
           <div className="min-w-0 flex-1">
-            <InputChatText />
+            <InputChatText value={query} onChange={setQuery} />
           </div>
           <div className="shrink-0">
             <SendQueryButton />
@@ -54,7 +55,13 @@ export function App() {
               onAddressChange={(address) => setSettings((current) => ({ ...current, address }))}
             />
           }
-          queryBuilder={<QueryBuildPannel />}
+          queryBuilder={
+            <QueryBuildPannel
+              address={settings.address}
+              port={settings.port}
+              content={query}
+            />
+          }
           saveButton={
             <div className="flex flex-col gap-2">
               <GeneralButton button_title="save" onClick={handleSaveSettings} />
