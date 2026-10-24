@@ -1,0 +1,7 @@
+@import "tailwindcss";
+
+@theme {
+  /* Font */
+  --font-sans: "Geist", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
+}

@@ -1,0 +1,29 @@
+{
+  "name": "bun-react-template",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "bun run tailwind:build && concurrently -k \"bun run tailwind:watch\" \"bun --hot src/index.ts\"",
+    "build": "bun run tailwind:build && bun build ./src/index.html --outdir=dist --sourcemap --target=browser --minify --define:process.env.NODE_ENV='\"production\"' --env='BUN_PUBLIC_*'",
+    "start": "bun run tailwind:build && NODE_ENV=production bun src/index.ts",
+    "tailwind:build": "bunx @tailwindcss/cli -i ./src/index.css -o ./src/tailwind.generated.css --minify",
+    "tailwind:watch": "bunx @tailwindcss/cli -i ./src/index.css -o ./src/tailwind.generated.css --watch",
+    "typecheck": "bun check"
+  },
+  "dependencies": {
+    "react": "^19",
+    "react-dom": "^19"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "@types/bun": "latest",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "concurrently": "^10.0.6",
+    "tailwindcss": "^4.3.3"
+  },
+  "peerDependencies": {
+    "typescript": "^7"
+  }
+}
